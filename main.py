@@ -49,12 +49,12 @@ def create_world():
     canvas.bind('<Button-1>', mouse_click)
 
     def del_ball2(event):
-        print("Попал по ball2")
+        print("Попал по ball2:", event.x, event.y, canvas.coords(ball2))
         canvas.delete(ball2)
 
     canvas.tag_bind(ball2, '<Button-1>', del_ball2)
 
-    def motion():
+    def motion():  # Сюда помещать события совершаемые по времени
         """
         Бесконечный цикл блокирует обновление графического интерфейса (если он выполняется не в отдельном потоке).
         Вместо него лучше использовать метод after.
@@ -65,6 +65,8 @@ def create_world():
             canvas.move(ball2, 2, 1)
             if canvas.coords(ball2)[2] < WIDTH_OF_CANVAS:
                 root_window.after(DELAY, motion)
+            else:
+                print("Достиг края")
         except:
             pass
 
@@ -78,4 +80,5 @@ root_window.geometry(SIZE_OF_ROOT_WINDOWS)
 b = tkinter.Button(root_window, text="Кнопка")
 b.pack()
 create_world()
-root_window.mainloop()
+root_window.mainloop()  # Метод mainloop() объекта Tk запускает главный цикл обработки событий,
+# что в том числе приводит к отображению главного окна со всеми его причиндалами на экране
