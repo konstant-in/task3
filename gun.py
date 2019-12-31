@@ -14,28 +14,25 @@ vx1 = 0
 vy1 = 0
 vx2 = 0
 vy2 = 0
-g = 0
 ball_of_gun = None
 target = None
 
 def to_fire():
-    global vx1, vy1, g
+    global vx1, vy1
     vx1 = 10
     vy1 = 0
-    g = .04
 
 def exsist_list(b):
     return len(canvas.coords(b)) != 0
 
 def motion():
-    global vx1, vy1 ,vx2, vy2, g
+    global vx1, vy1 ,vx2, vy2
     if not exsist_list(ball_of_gun):
         ball_init()
     if len(canvas.coords(target)) == 0:
         tartet_init()
     canvas.move(target, vx2, vy2)
     canvas.move(ball_of_gun, vx1, vy1)
-    vy1 += g
     if exsist_list(ball_of_gun) and target in canvas.find_overlapping(*canvas.coords(ball_of_gun)):
         print("Попал!!!")
         canvas.delete(target)
@@ -50,18 +47,16 @@ def motion():
 
 
 def ball_init():
-    global ball_of_gun, vx1, vy1, g
+    global ball_of_gun, vx1, vy1
     vx1 = 0
     vy1 = 0
-    g = 0
     print('Новое ядро')
     ball_of_gun = canvas.create_oval(0, HEIGHT_OF_CANVAS / 2, R, HEIGHT_OF_CANVAS / 2 + R, outline='red', fill='red')
 
 def tartet_init():
-    global target, vx2, vy2, g
+    global target, vx2, vy2
     vx2 = 0
     vy2 = -1
-    g = 0
     print('Новая цель')
     target = canvas.create_oval(WIDTH_OF_CANVAS - R2, HEIGHT_OF_CANVAS, WIDTH_OF_CANVAS, HEIGHT_OF_CANVAS - R2, outline='blue', fill='blue', tag='ball2')
 
