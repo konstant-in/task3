@@ -1,8 +1,5 @@
 import tkinter
 
-# Заготовка ??????????????????????????
-
-# constants
 SIZE_OF_ROOT_WINDOWS = '800x600'
 WIDTH_OF_CANVAS = 800
 HEIGHT_OF_CANVAS = 600
@@ -11,11 +8,11 @@ DELAY = 80
 
 
 class Ball():
-    def __init__(self, x, y, radius, canvas):
+    def __init__(self, x, y, radius, c):
         self.x = x
         self.y = y
         self.radius = radius
-        self.canvas = canvas
+        self.canvas = c
         self.wiev_ball = self.canvas.create_oval(self.x,
                                                  self.y,
                                                  self.x + self.radius,
@@ -27,6 +24,7 @@ class Ball():
         self.x += dx
         self.y += dy
         self.canvas.move(self.wiev_ball, dx, dy)
+        print(self.x, self.y)
 
 
 def keypress(event):
@@ -35,15 +33,9 @@ def keypress(event):
 
 def motion():
     b.move(5, 3)
-    print(b.x, b.y)
     root.after(DELAY, motion)
 
 
-def move_ball(ball, dx, dy):
-    canvas.move(ball.wiev_ball, dx, dy)
-
-
-# create a window, the canvas and start game
 root = tkinter.Tk()
 root.title("Полёт шаров")
 root.geometry(SIZE_OF_ROOT_WINDOWS)
