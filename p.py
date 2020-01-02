@@ -24,7 +24,7 @@ class Ball():
         self.x += dx
         self.y += dy
         self.canvas.move(self.wiev_ball, dx, dy)
-        print(self.x, self.y)
+        # print(self.x, self.y)
 
 
 def keypress(event):
