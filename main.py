@@ -48,8 +48,6 @@ def motion():  # Сюда помещать события совершаемые
 root_window = tkinter.Tk()
 root_window.title("Полёт шаров")
 root_window.geometry(SIZE_OF_ROOT_WINDOWS)
-b = tkinter.Button(root_window, text="Кнопка")
-b.pack()
 canvas = tkinter.Canvas(root_window, width=WIDTH_OF_CANVAS, height=HEIGHT_OF_CANVAS, bg=COLOR_OF_CANVAS)
 canvas.pack()
 ball = canvas.create_oval(0, 0, R, R, outline='red', fill='red')
